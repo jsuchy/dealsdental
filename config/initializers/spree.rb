@@ -11,6 +11,7 @@ Spree.config do |config|
   # config.track_inventory_levels = false
   config.logo = 'logo/deals_dental.png'
   config.admin_interface_logo = config.logo
+  config.products_per_page = 24
 end
 
 Spree.user_class = "Spree::User"

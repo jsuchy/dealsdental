@@ -1,305 +1,105 @@
 require File.expand_path('../../../config/environment', __FILE__)
 
-puts "Adding option types"
-color = Spree::OptionType.create!(
-  {
-    :name => "color",
-    :presentation => "Color",
-    :position => 1
-  })
-
-size = Spree::OptionType.create!(
-  {
-    :name => "size",
-    :presentation => "Size",
-    :position => 2
-  })
-
-gown_size = Spree::OptionType.create!(
-  {
-    :name => "gown-size",
-    :presentation => "Size",
-    :position => 3
-  })
-
-eyewear_type = Spree::OptionType.create!(
-  {
-    :name => "eyewear-type",
-    :presentation => "Type",
-    :position => 4
-  })
-
-orthobox_type = Spree::OptionType.create!(
-  {
-    :name => "ortho-box-type",
-    :presentation => "Type",
-    :position => 5
-  })
-
-cap_size = Spree::OptionType.create!(
-  {
-    :name => "cap-size",
-    :presentation => "Size",
-    :position => 6
-  })
-
-puts "Adding option values"
-Spree::OptionValue.create!([
-  {
-    :name => "Extra Small",
-    :presentation => "XS",
-    :position => 1,
-    :option_type => size
-  },
-  {
-    :name => "Small",
-    :presentation => "S",
-    :position => 2,
-    :option_type => size
-  },
-  {
-    :name => "Medium",
-    :presentation => "M",
-    :position => 3,
-    :option_type => size
-  },
-  {
-    :name => "Large",
-    :presentation => "L",
-    :position => 4,
-    :option_type => size
-  },
-  {
-    :name => "Extra Large",
-    :presentation => "XL",
-    :position => 5,
-    :option_type => size
-  },
-  {
-    :name => "Double Extra Large",
-    :presentation => "XXL",
-    :position => 6,
-    :option_type => size
-  },
-  {
-    :name => "Triple Extra Large",
-    :presentation => "XXXL",
-    :position => 7,
-    :option_type => size
-  },
-
-  {
-    :name => "Blue",
-    :presentation => "Blue",
-    :position => 8,
-    :option_type => color
-  },
-  {
-    :name => "Ceil Blue",
-    :presentation => "Ceil Blue",
-    :position => 9,
-    :option_type => color
-  },
-  {
-    :name => "Sky Blue",
-    :presentation => "Sky Blue",
-    :position => 10,
-    :option_type => color
-  },
-  {
-    :name => "Pink",
-    :presentation => "Pink",
-    :position => 11,
-    :option_type => color
-  },
-  {
-    :name => "Purple",
-    :presentation => "Purple",
-    :position => 12,
-    :option_type => color
-  },
-  {
-    :name => "White",
-    :presentation => "White",
-    :position => 13,
-    :option_type => color
-  },
-  {
-    :name => "Green",
-    :presentation => "Green",
-    :position => 14,
-    :option_type => color
-  },
-  {
-    :name => "Mauve",
-    :presentation => "Mauve",
-    :position => 15,
-    :option_type => color
-  },
-  {
-    :name => "Mauve (Pink)",
-    :presentation => "Mauve (Pink)",
-    :position => 16,
-    :option_type => color
-  },
-  {
-    :name => "Lavender",
-    :presentation => "Lavender",
-    :position => 17,
-    :option_type => color
-  },
-  {
-    :name => "Yellow",
-    :presentation => "Yellow",
-    :position => 18,
-    :option_type => color
-  },
-  {
-    :name => "Metal",
-    :presentation => "Metal",
-    :position => 19,
-    :option_type => color
-  },
-  {
-    :name => "Orange",
-    :presentation => "Orange",
-    :position => 20,
-    :option_type => color
-  },
-  {
-    :name => "Clear",
-    :presentation => "Clear",
-    :position => 21,
-    :option_type => color
-  },
-  {
-    :name => "Gown Medium",
-    :presentation => 'Medium - 40" Length',
-    :position => 22,
-    :option_type => gown_size
-  },
-  {
-    :name => "Gown Large",
-    :presentation => 'Large - 48" Length',
-    :position => 23,
-    :option_type => gown_size
-  },
-  {
-    :name => "Eyewear Clear",
-    :presentation => 'Clear',
-    :position => 24,
-    :option_type => eyewear_type
-  },
-  {
-    :name => "Eyewear Fashion Style - Clear",
-    :presentation => 'Fashion Style - Clear',
-    :position => 25,
-    :option_type => eyewear_type
-  },
-  {
-    :name => "Eyewear U.V Protective",
-    :presentation => 'U.V Protective',
-    :position => 26,
-    :option_type => eyewear_type
-  },
-  {
-    :name => "Eyewear U.V Protective - Fashion",
-    :presentation => 'U.V Protective - Fashion',
-    :position => 27,
-    :option_type => eyewear_type
-  },
-  {
-    :name => "Ortho-Box Denture",
-    :presentation => 'Denture',
-    :position => 28,
-    :option_type => orthobox_type
-  },
-  {
-    :name => "Ortho-Box Retainer",
-    :presentation => 'Retainer',
-    :position => 29,
-    :option_type => orthobox_type
-  },
-  {
-    :name => 'Blue - 21"',
-    :presentation => 'Blue - 21"',
-    :position => 30,
-    :option_type => cap_size
-  },
-  {
-    :name => 'Blue - 24"',
-    :presentation => 'Blue - 24"',
-    :position => 31,
-    :option_type => cap_size
-  }
-])
-
-
-puts "Adding products"
 tax_category = Spree::TaxCategory.find_by_name!("Default")
 shipping_category = Spree::ShippingCategory.find_by_name!("Default")
 
+puts "Adding products"
+
+color_type = Spree::OptionType.find_by_name!("Color")
+size_type = Spree::OptionType.find_by_name!("Size")
+cap_size_type = Spree::OptionType.find_by_name!("Cap Size")
+gown_size_type = Spree::OptionType.find_by_name!("Gown Size")
+eyewear_type = Spree::OptionType.find_by_name!("Eyewear Type")
+ortho_box_type = Spree::OptionType.find_by_name!("Ortho Box Type")
+sponge_type = Spree::OptionType.find_by_name!("Sponge Type")
+cotton_tip_applicator_type = Spree::OptionType.find_by_name!("Cotton Tip Applicator Size")
+cup_color_type = Spree::OptionType.find_by_name!("Cup Color")
+dental_needle_type = Spree::OptionType.find_by_name!("Dental Needle Type")
+headrest_cover_size_type = Spree::OptionType.find_by_name!("Headrest Cover Size")
+sponge_size_type = Spree::OptionType.find_by_name!("Sponge Size")
+dispensing_tip_type = Spree::OptionType.find_by_name!("Dispensing Tip Type")
+cleaning_wipe_type = Spree::OptionType.find_by_name!("Cleaning Wipe Type")
+loation_soap_type = Spree::OptionType.find_by_name!("Lotion Soap Type")
+evacuation_trap_type = Spree::OptionType.find_by_name!("Evacuation Trap Type")
+glove_size_type = Spree::OptionType.find_by_name!("Glove Size")
+impression_material_type = Spree::OptionType.find_by_name!("Impression Material")
+putty_material_type = Spree::OptionType.find_by_name!("Putty Material Type")
+bite_registration_material_type = Spree::OptionType.find_by_name!("Bite Registration Material Type")
+crown_and_bride_material_type = Spree::OptionType.find_by_name!("Crown and Bridge Material Type")
+impression_tray_type = Spree::OptionType.find_by_name!("Impression Tray")
+bite_tray_type = Spree::OptionType.find_by_name!("Bite Tray Type")
+air_water_syringe_type = Spree::OptionType.find_by_name!("Air/Water Syringe Type")
+micro_applicator_type = Spree::OptionType.find_by_name!("Micro Applicator Type")
+saliva_ejector_type = Spree::OptionType.find_by_name!("Saliva Ejector")
+aspirator_tip_type = Spree::OptionType.find_by_name!("Aspirator Tip Type")
+mask_type = Spree::OptionType.find_by_name!("Mask Type")
+prophy_paste_type = Spree::OptionType.find_by_name!("Prophy Paste Type")
+prophy_angle_type = Spree::OptionType.find_by_name!("Prophy Angle Type")
+barrier_film_type = Spree::OptionType.find_by_name!("Barrier Film Type")
+tray_sleeve_type = Spree::OptionType.find_by_name!("Tray Sleeve Type")
+xray_sensor_sleeve_type = Spree::OptionType.find_by_name!("X-Ray Sensor Sleeve Type")
+headrest_cover_type = Spree::OptionType.find_by_name!("Headrest Cover Type")
+barrier_envelope_type = Spree::OptionType.find_by_name!("Barrier Envelope Type")
+sterilization_pouch_type = Spree::OptionType.find_by_name!("Sterilization Pouch Size")
+sterilization_tubing_type = Spree::OptionType.find_by_name!("Sterilization Tubing Type")
+sterilization_indicator_type = Spree::OptionType.find_by_name!("Sterilization Indicator Size")
+sterilization_wrap_type = Spree::OptionType.find_by_name!("Sterilization Wrap Size")
+spore_testing_service_type = Spree::OptionType.find_by_name!("Spore Testing Service Type")
+mixing_tip_type = Spree::OptionType.find_by_name!("Mixing Tip Type")
+dispensing_gun_type = Spree::OptionType.find_by_name!("Dispensing Gun Type")
+oral_tip_type = Spree::OptionType.find_by_name!("Oral Tip Type")
+crown_and_bridge_tip_type = Spree::OptionType.find_by_name!("Crown and Bridge Tip Type")
+
+
+
+
 default_attrs = {
-  :description => Faker::Lorem.paragraph,
+  :tax_category => tax_category,
+  :shipping_category => shipping_category,
+  :description => "",
   :available_on => Time.zone.now
 }
 
 products = [
   {
     :name => 'Bouffant Caps (Non-Sterile - 100/box)',
-    :tax_category => tax_category,
-    :shipping_category => shipping_category,
-    :option_types => [cap_size],
+    :option_types => [cap_size_type],
     :price => 8.95
   },
   {
     :name => 'Shoe Covers (Non-Sterile - 100/box)',
-    :tax_category => tax_category,
-    :shipping_category => shipping_category,
     :description => "Blue - Non-Skid - One Size Fits All",
     :sku => "SC-5000",
     :price => 9.95
   },
   {
     :name => 'Defend Plus Jacket - 10/Bag',
-    :tax_category => tax_category,
-    :shipping_category => shipping_category,
-    :option_types => [color, size],
+    :option_types => [color_type, size_type],
     :price => 21.95
   },
   {
     :name => 'Defend Plus Full Length Lab Coat - 10/Bag',
-    :tax_category => tax_category,
-    :shipping_category => shipping_category,
-    :option_types => [color, size],
+    :option_types => [color_type, size_type],
     :price => 22.95
   },
   {
     :name => 'Disposable Lab Coats - 10/Bag',
-    :tax_category => tax_category,
-    :shipping_category => shipping_category,
-    :option_types => [size],
+    :option_types => [size_type],
     :price => 19.95
   },
   {
     :name => 'Disposable Tie-Back Protective Gowns - 10/Bag',
-    :tax_category => tax_category,
-    :shipping_category => shipping_category,
-    :option_types => [gown_size],
+    :option_types => [gown_size_type],
     :price => 10.95
   },
   {
     :name => 'Protective Eyewear',
-    :tax_category => tax_category,
-    :shipping_category => shipping_category,
     :option_types => [eyewear_type],
     :price => 6.20
   },
   {
     :name => 'Ortho Boxes (Assorted Colors) - 12/Box',
-    :tax_category => tax_category,
-    :shipping_category => shipping_category,
-    :option_types => [orthobox_type],
+    :option_types => [ortho_box_type],
     :price => 8.95
   }
 ]
@@ -320,29 +120,28 @@ orthobox = Spree::Product.find_by_name!('Ortho Boxes (Assorted Colors) - 12/Box'
 blue_21 = Spree::OptionValue.find_by_name!('Blue - 21"')
 blue_24 = Spree::OptionValue.find_by_name!('Blue - 24"')
 
-x_small = Spree::OptionValue.find_by_name!('Extra Small')
 small = Spree::OptionValue.find_by_name!('Small')
 medium = Spree::OptionValue.find_by_name!('Medium')
 large = Spree::OptionValue.find_by_name!('Large')
-x_large = Spree::OptionValue.find_by_name!('Extra Large')
-xx_large = Spree::OptionValue.find_by_name!('Double Extra Large')
-xxx_large = Spree::OptionValue.find_by_name!('Triple Extra Large')
+x_large = Spree::OptionValue.find_by_name!('X-Large')
+xx_large = Spree::OptionValue.find_by_name!('XX-Large')
+xxx_large = Spree::OptionValue.find_by_name!('XXX-Large')
 
 ceil_blue = Spree::OptionValue.find_by_name!('Ceil Blue')
 sky_blue = Spree::OptionValue.find_by_name!('Sky Blue')
 pink = Spree::OptionValue.find_by_name!('Pink')
 purple = Spree::OptionValue.find_by_name!('Purple')
 
-gown_medium = Spree::OptionValue.find_by_name!('Gown Medium')
-gown_large = Spree::OptionValue.find_by_name!('Gown Large')
+gown_medium = Spree::OptionValue.find_by_name!('Medium - 40" Length')
+gown_large = Spree::OptionValue.find_by_name!('Large - 48" Length')
 
-eyewear_clear = Spree::OptionValue.find_by_name!("Eyewear Clear")
-eyewear_fashion_clear = Spree::OptionValue.find_by_name!("Eyewear Fashion Style - Clear")
-eyewear_protective = Spree::OptionValue.find_by_name!("Eyewear U.V Protective")
-eyewear_protective_fashion = Spree::OptionValue.find_by_name!("Eyewear U.V Protective - Fashion")
+eyewear_clear = Spree::OptionValue.find_by_name!("Clear")
+eyewear_fashion_clear = Spree::OptionValue.find_by_name!("Fashion Style - Clear")
+eyewear_protective = Spree::OptionValue.find_by_name!("U.V. Protective")
+eyewear_protective_fashion = Spree::OptionValue.find_by_name!("U.V. Protective - Fashion")
 
-orthobox_denture = Spree::OptionValue.find_by_name!("Ortho-Box Denture")
-orthobox_retainer = Spree::OptionValue.find_by_name!("Ortho-Box Retainer")
+orthobox_denture = Spree::OptionValue.find_by_name!("Denture Box")
+orthobox_retainer = Spree::OptionValue.find_by_name!("Retainer Box")
 
 variants = [
   {

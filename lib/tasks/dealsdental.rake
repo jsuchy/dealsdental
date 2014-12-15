@@ -8,4 +8,9 @@ namespace :dealsdental do
   task :development_data do
     load "#{Rails.root}/db/deals_dental/development_data.rb"
   end
+
+  desc "Seeds initial product data"
+  task :production_data do
+    load "#{Rails.root}/db/deals_dental/production_data.rb"
+  end
 end

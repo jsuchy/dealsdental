@@ -1,9 +1,5 @@
 require File.expand_path('../../../config/environment', __FILE__)
 
-tax_category = Spree::TaxCategory.find_by_name!("Default")
-shipping_category = Spree::ShippingCategory.find_by_name!("Default")
-
-
 puts "Adding 'Color' options"
 color_type = Spree::OptionType.create!({:name => "Color", :presentation => "Color", :position => 1})
 

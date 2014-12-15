@@ -11,6 +11,7 @@ namespace :dealsdental do
 
   desc "Seeds initial product data"
   task :production_data do
+    load "#{Rails.root}/db/deals_dental/initial_load_option_types.rb"
     load "#{Rails.root}/db/deals_dental/production_data.rb"
   end
 end

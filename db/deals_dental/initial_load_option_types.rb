@@ -140,6 +140,12 @@ Spree::OptionValue.create!({ :name => 'Cuspidor Screens Universal', :presentatio
 Spree::OptionValue.create!({ :name => 'Saliva Ejector Screens',     :presentation => 'Saliva Ejector Screens',     :position => 7, :option_type => evacuation_trap_type })
 Spree::OptionValue.create!({ :name => 'HVE Screens',                :presentation => 'HVE Screens',                :position => 8, :option_type => evacuation_trap_type })
 
+puts "Adding 'Omni Care Type' options"
+omni_care_type = Spree::OptionType.create!({:name => "Omni Care Type", :presentation => "Omni Care Type", :position => 16})
+
+Spree::OptionValue.create!({ :name => 'Automatic Dispensor',           :presentation => 'Automatic Dispensor',           :position => 1, :option_type => omni_care_type })
+Spree::OptionValue.create!({ :name => 'Antibacterial Hand Soap',       :presentation => 'Antibacterial Hand Soap',       :position => 2, :option_type => omni_care_type })
+Spree::OptionValue.create!({ :name => 'Hand Sanitizer Spray - 400 ml', :presentation => 'Hand Sanitizer Spray - 400 ml', :position => 3, :option_type => omni_care_type })
 
 
 puts "Adding 'Glove Size' options"
@@ -366,10 +372,20 @@ Spree::OptionValue.create!({ :name => 'Clear - 3"',                  :presentati
 Spree::OptionValue.create!({ :name => 'Clear - 4"',                  :presentation => 'Clear - 4"',                  :position => 3, :option_type => sterilization_tubing_type })
 Spree::OptionValue.create!({ :name => 'Clear - 6"',                  :presentation => 'Clear - 6"',                  :position => 4, :option_type => sterilization_tubing_type })
 Spree::OptionValue.create!({ :name => 'W/Defend Indicator Ink - 2"', :presentation => 'W/Defend Indicator Ink - 2"', :position => 5, :option_type => sterilization_tubing_type })
-Spree::OptionValue.create!({ :name => 'W/Defend Indicator Ink - 3"', :presentation => 'W/Defend Indicator Ink - 3"', :position => 7, :option_type => sterilization_tubing_type })
-Spree::OptionValue.create!({ :name => 'W/Defend Indicator Ink - 4"', :presentation => 'W/Defend Indicator Ink - 4"', :position => 8, :option_type => sterilization_tubing_type })
-Spree::OptionValue.create!({ :name => 'W/Defend Indicator Ink - 6"', :presentation => 'W/Defend Indicator Ink - 6"', :position => 9, :option_type => sterilization_tubing_type })
+Spree::OptionValue.create!({ :name => 'W/Defend Indicator Ink - 3"', :presentation => 'W/Defend Indicator Ink - 3"', :position => 6, :option_type => sterilization_tubing_type })
+Spree::OptionValue.create!({ :name => 'W/Defend Indicator Ink - 4"', :presentation => 'W/Defend Indicator Ink - 4"', :position => 7, :option_type => sterilization_tubing_type })
+Spree::OptionValue.create!({ :name => 'W/Defend Indicator Ink - 6"', :presentation => 'W/Defend Indicator Ink - 6"', :position => 8, :option_type => sterilization_tubing_type })
 
+
+puts "Adding 'Heat Sealer & Accessories' options"
+heat_sealer_type = Spree::OptionType.create!({:name => "Heat Sealer & Accessories", :presentation => "Heat Sealer & Accessories", :position => 37})
+
+Spree::OptionValue.create!({ :name => '110 Volt Unit',                     :presentation => '110 Volt Unit',                     :position => 1, :option_type => heat_sealer_type })
+Spree::OptionValue.create!({ :name => 'Heating Elements - 3 Pack',         :presentation => 'Heating Elements - 3 Pack',         :position => 2, :option_type => heat_sealer_type })
+Spree::OptionValue.create!({ :name => 'Upper Insulating Cloth - 3 Pack',   :presentation => 'Upper Insulating Cloth - 3 Pack',   :position => 3, :option_type => heat_sealer_type })
+Spree::OptionValue.create!({ :name => 'Lower Insulating Cloth - 3 Pack',   :presentation => 'Lower Insulating Cloth - 3 Pack',   :position => 4, :option_type => heat_sealer_type })
+Spree::OptionValue.create!({ :name => 'Silicone Strip (Opaque Plastic)',   :presentation => 'Silicone Strip (Opaque Plastic)',   :position => 5, :option_type => heat_sealer_type })
+Spree::OptionValue.create!({ :name => 'Heat Sealer Repair Kit: 1 Heating Element, 1  Upper Cloth, 1 Lower Cloth, 1 Silicone Strip', :presentation => 'Heat Sealer Repair Kit: 1 Heating Element, 1  Upper Cloth, 1 Lower Cloth, 1 Silicone Strip', :position => 7, :option_type => heat_sealer_type })
 
 puts "Adding 'Sterilization Indicator Size' options"
 sterilization_indicator_type = Spree::OptionType.create!({:name => "Sterilization Indicator Size", :presentation => "Sterilization Indicator Size", :position => 38})

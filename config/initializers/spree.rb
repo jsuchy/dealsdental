@@ -10,6 +10,8 @@ Spree.config do |config|
   config.logo = 'logo/deals_dental.png'
   config.admin_interface_logo = config.logo
   config.products_per_page = 24
+  config.tax_using_ship_address = false
+  config.mails_from = 'orders@dealsdental.com'
 end
 
 Spree.user_class = "Spree::User"

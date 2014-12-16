@@ -18,3 +18,14 @@ bundle exec rake db:seed dealsdental:basic_data
 
 to create the minimal configuration for a new shop.
 
+### Configuration
+
+The following environment variables are expected to be set accordingly:
+
+```
+ENV["SMTP_ADDRESS"]
+ENV["SMTP_PORT"]
+ENV["SMTP_USERNAME"]
+ENV["SMTP_PASSWORD"]
+```
+

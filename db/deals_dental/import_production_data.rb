@@ -1,6 +1,12 @@
 require 'csv'
 require File.expand_path('../../../config/environment', __FILE__)
 
+import_file = File.expand_path('initial_load.csv', File.dirname(__FILE__))
+
+if !File.file?(import_file)
+  raise "Import file not found!"
+end
+
 Rails.logger.level = 5
 
 tax_category = Spree::TaxCategory.find_by_name!("Default")
@@ -68,7 +74,7 @@ end
 
 is_one_variant_item = false;
 product = nil
-CSV.foreach(File.expand_path('initial_load.csv', File.dirname(__FILE__))) do |row|
+CSV.foreach(import_file) do |row|
   if row[1].nil?
     name = row.first
     price = row.last
@@ -101,10 +107,6 @@ CSV.foreach(File.expand_path('initial_load.csv', File.dirname(__FILE__))) do |ro
         :price => price
       })
       is_one_variant_item = false
-
-      product.stock_items.each do |stock_item|
-        Spree::StockMovement.create(:quantity => 10, :stock_item => stock_item)
-      end
     else
       puts "Adding variant: " + titleize(value)
 
@@ -117,10 +119,6 @@ CSV.foreach(File.expand_path('initial_load.csv', File.dirname(__FILE__))) do |ro
         :option_values => option_values(titleize(value)),
         :sku => sku
       })
-
-      variant.stock_items.each do |stock_item|
-        Spree::StockMovement.create(:quantity => 10, :stock_item => stock_item)
-      end
     end
   end
 end

@@ -1,0 +1,4 @@
+require 'devise'
+
+Devise.secret_key = "971f4f1fb93e39a79d28d870a469058e33810376d46345bfae169996d30a859bd1e85f3902c86312dd3ad4de70eaed9c63a8"
+

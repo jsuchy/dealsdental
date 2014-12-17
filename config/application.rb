@@ -33,14 +33,15 @@ module DealsDental
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.action_mailer.smtp_settings = {
-      address:              ENV["SMTP_ADDRESS"],
-      port:                 ENV["SMTP_PORT"],
-      user_name:            ENV["SMTP_USERNAME"],
-      password:             ENV["SMTP_PASSWORD"],
-      authentication:       'plain',
-      enable_starttls_auto: true
-    }
-#    ActionMailer::Base.default bcc: 'orders@dealsdental.com'
+  config.action_mailer.smtp_settings = {
+    address:              ENV["SMTP_ADDRESS"],
+    port:                 ENV["SMTP_PORT"],
+    user_name:            ENV["SMTP_USERNAME"],
+    password:             ENV["SMTP_PASSWORD"],
+    authentication:       :login,
+    enable_starttls_auto: true,
+    tls:                  true
+  }
+#  ActionMailer::Base.default bcc: 'orders@dealsdental.com'
   end
 end

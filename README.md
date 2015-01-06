@@ -20,13 +20,18 @@ to create the minimal configuration for a new shop.
 
 ### Configuration
 
-The following environment variables are expected to be set accordingly:
+The following environment variables are expected to be set accordingly
+for configuring AWS S3 and mail settings:
 
 ```
+ENV["AWS_ACCESS_KEY_ID"]
+ENV["AWS_SECRET_ACCESS_KEY"]
+ENV["S3_BUCKET_NAME"]
 ENV["SMTP_ADDRESS"]
 ENV["SMTP_PORT"]
 ENV["SMTP_USERNAME"]
 ENV["SMTP_PASSWORD"]
+ENV["STORE_EMAIL"]
+ENV["ORDERS_EMAIL"]
 ```
 
-*test text*

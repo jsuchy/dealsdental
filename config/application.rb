@@ -44,6 +44,6 @@ module DealsDental
     enable_starttls_auto: true,
     tls:                  true
   }
-#  ActionMailer::Base.default bcc: 'orders@dealsdental.com'
+  ActionMailer::Base.default bcc: ENV["ORDERS_EMAIL"]
   end
 end

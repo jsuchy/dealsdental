@@ -11,7 +11,7 @@ Spree.config do |config|
   config.admin_interface_logo = config.logo
   config.products_per_page = 24
   config.tax_using_ship_address = false
-  config.mails_from = 'orders@dealsdental.com'
+  config.mails_from = ENV['STORE_EMAIL']
 end
 
 if Rails.env.production?

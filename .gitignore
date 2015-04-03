@@ -16,3 +16,6 @@
 /tmp
 
 credentials.csv
+*.crt
+*.csr
+*.key
